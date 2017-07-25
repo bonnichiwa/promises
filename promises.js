@@ -1,28 +1,34 @@
 /**
- * Define the sample object
+ * Define the EmailAccount object
  *
- * @param {String} data
  * no @returns
  */
-var sampleObject = function(data) {
-  this.data = data;
-}
+var EmailAccount = function() {
+  this.inbox = [];
+  this.outbox = [];
+  this.spam = [];
+};
 
 /**
- * The sample object has a function to get data
+ * Initalize EmailAccount
  *
  * no @returns
  */
-sampleObject.prototype.getData = function() {
-  //If the data exists
-  if (this.data) {
-    console.log(this.data);
-  }
-  //If the data cannot be found 
-  else {
-    setTimeout(function() {
-      this.data = "Hello";
-      console.log(this.data);
-    }, 2000);
-  }
-}
+EmailAccount.prototype.init = function() {
+  this.loadEmails.then(function(emails) {
+    this.inbox = emails;
+    console.log(this.inbox);
+  }.bind(this));
+};
+
+/**
+ * EmailAccount's call to API simulation to load emails
+ *
+ * no @returns
+ */
+EmailAccount.prototype.loadEmails = new Promise(function(resolve, reject) {
+  setTimeout(function(){
+    resolve(["Email about dogs", "Email about cats", "Emails about fishes"]);
+  }, 10000);
+});
+
