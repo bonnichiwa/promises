@@ -44,7 +44,7 @@ EmailAccount.prototype.loadInbox = function() {
 /**
  * EmailAccount's call to API simulation to load outbox emails
  *
- * no @returns
+ * @returns {Array}
  */
 EmailAccount.prototype.loadOutbox = function() {
   return new Promise(function(resolve, reject) {
@@ -57,7 +57,7 @@ EmailAccount.prototype.loadOutbox = function() {
 /**
  * EmailAccount's call to API simulation to load spam emails
  *
- * no @returns
+ * @returns {Array}
  */
 EmailAccount.prototype.loadSpam = function() {
   return new Promise(function(resolve, reject) {
@@ -68,7 +68,7 @@ EmailAccount.prototype.loadSpam = function() {
 };
 
 /** 
- * Display inbox emails after loaded
+ * Display inbox emails 
  *
  * no @returns
  */
@@ -84,7 +84,7 @@ EmailAccount.prototype.displayInboxEmails = function() {
 } 
 
 /**
- * Display outbox emails after loaded 
+ * Display outbox emails
  *
  * no @returns
  */
@@ -100,7 +100,7 @@ EmailAccount.prototype.displayOutboxEmails = function() {
 } 
 
 /**
- * Display spam emails after loaded
+ * Display spam emails 
  *
  * no @returns
  */
@@ -121,17 +121,17 @@ EmailAccount.prototype.displaySpamEmails = function() {
  * no @returns
  */
 EmailAccount.prototype.observers = function() {
-  //When Inbox button has been clicked
+  // When Inbox button has been clicked
   if (this.htmlElement.inboxButton) {
     this.htmlElement.inboxButton.addEventListener('click', this.displayInboxEmails.bind(this));
   }
 
-  //When Outbox button has been clicked
+  // When Outbox button has been clicked
   if (this.htmlElement.outboxButton) {
     this.htmlElement.outboxButton.addEventListener('click', this.displayOutboxEmails.bind(this));
   }
 
-  //When Spam button has been clicked
+  // When Spam button has been clicked
   if (this.htmlElement.spamButton) {
     this.htmlElement.spamButton.addEventListener('click', this.displaySpamEmails.bind(this));
   }
