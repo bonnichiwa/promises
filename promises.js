@@ -111,7 +111,6 @@ EmailAccount.prototype.displayOutboxEmails = function() {
 EmailAccount.prototype.displaySpamEmails = function() {
   this.loadSpam().then(function(emails) {
     this.spam = emails;
-    console.log(this.spam);
     this.htmlElement.emailContent.textContent = this.spam;
   }.bind(this));
 }; 
