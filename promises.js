@@ -36,13 +36,13 @@ EmailAccount.prototype.init = function() {
 EmailAccount.prototype.loadInbox = function() {
   return new Promise(function(resolve, reject) {
     if (this.inbox) {
-      return this.inbox;
+      resolve(this.inbox);
     } else {
       setTimeout(function(){
         resolve(["Email about dogs", "Email about cats", "Emails about fishes"]);
       }, 1000);
     }
-  });
+  }.bind(this));
 };
 
 /**
@@ -53,13 +53,13 @@ EmailAccount.prototype.loadInbox = function() {
 EmailAccount.prototype.loadOutbox = function() {
   return new Promise(function(resolve, reject) {
     if (this.outbox) {
-      return this.outbox;
+      resolve(this.outbox);
     } else {
       setTimeout(function(){
         resolve(["Sending an email about the weather", "Sending an email about the colour of the sky", "Sending an email about how cold it is in Dubai"]);
       }, 1000);
     }
-  });
+  }.bind(this));
 };
 
 /**
@@ -70,13 +70,13 @@ EmailAccount.prototype.loadOutbox = function() {
 EmailAccount.prototype.loadSpam = function() {
   return new Promise(function(resolve, reject) {
     if (this.spam) {
-      return this.spam;
+      resolve(this.spam);
     } else {
       setTimeout(function(){
         resolve(["Uninteresting email about things you don't care about", "Uninteresting email about things you used to care about", "Uninteresting email about things you never heard of"]);
       }, 1000);
     }
-  });
+  }.bind(this));
 };
 
 /** 
@@ -151,17 +151,17 @@ EmailAccount.prototype.observers = function() {
   // When Inbox button has been clicked
   if (this.htmlElement.inboxButton) {
     this.htmlElement.inboxButton.addEventListener('click', this.onClickInboxButton.bind(this));
-  }
+  };
 
   // When Outbox button has been clicked
   if (this.htmlElement.outboxButton) {
     this.htmlElement.outboxButton.addEventListener('click', this.onClickOutboxButton.bind(this));
-  }
+  };
 
   // When Spam button has been clicked
   if (this.htmlElement.spamButton) {
     this.htmlElement.spamButton.addEventListener('click', this.onClickSpamButton.bind(this));
-  }
+  };
 }; 
 
 // Instantiate emailAccountComponent
