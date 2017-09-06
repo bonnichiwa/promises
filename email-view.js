@@ -34,7 +34,7 @@ EmailView.prototype.init = function() {
  */
 EmailView.prototype.displayInboxEmails = function() {
   this.emailService.loadInbox().then(function(emails) {
-    // this.inbox = emails;
+    this.inbox = emails;
     this.htmlElement.emailContent.textContent = emails;
   }.bind(this));
 }; 
@@ -46,7 +46,7 @@ EmailView.prototype.displayInboxEmails = function() {
  */
 EmailView.prototype.displayOutboxEmails = function() {
   this.emailService.loadOutbox().then(function(emails) {
-    // this.outbox = emails;
+    this.outbox = emails;
     this.htmlElement.emailContent.textContent = emails;
   }.bind(this));
 }; 
@@ -58,7 +58,7 @@ EmailView.prototype.displayOutboxEmails = function() {
  */
 EmailView.prototype.displaySpamEmails = function() {
   this.emailService.loadSpam().then(function(emails) {
-    // this.spam = emails;
+    this.spam = emails;
     this.htmlElement.emailContent.textContent = emails;
   }.bind(this));
 }; 

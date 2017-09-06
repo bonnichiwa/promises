@@ -15,15 +15,15 @@ var EmailService = function() {
  * @returns {Promise} 
  */
 EmailService.prototype.loadInbox = function() {
-  return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve, reject) {
     if (this.inbox) {
-      return this.inbox;
+      resolve(this.inbox);
     } else {
       setTimeout(function(){
         resolve(["Email about dogs", "Email about cats", "Emails about fishes"]);
       }, 1000);
     }
-  });
+  }.bind(this));
 };
 
 /**
@@ -34,13 +34,13 @@ EmailService.prototype.loadInbox = function() {
 EmailService.prototype.loadOutbox = function() {
   return new Promise(function(resolve, reject) {
     if (this.outbox) {
-      return this.outbox;
+      resolve(this.outbox);
     } else {
       setTimeout(function(){
         resolve(["Sending an email about the weather", "Sending an email about the colour of the sky", "Sending an email about how cold it is in Dubai"]);
       }, 1000);
     }
-  });
+  }.bind(this));
 };
 
 /**
@@ -51,11 +51,11 @@ EmailService.prototype.loadOutbox = function() {
 EmailService.prototype.loadSpam = function() {
   return new Promise(function(resolve, reject) {
     if (this.spam) {
-      return this.spam;
+      resolve(this.spam);
     } else {
       setTimeout(function(){
         resolve(["Uninteresting email about things you don't care about", "Uninteresting email about things you used to care about", "Uninteresting email about things you never heard of"]);
       }, 1000);
     }
-  });
+  }.bind(this));
 };
